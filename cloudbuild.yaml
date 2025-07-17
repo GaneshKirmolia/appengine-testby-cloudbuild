@@ -1,0 +1,15 @@
+steps:
+  - name: 'node:16'
+    entrypoint: 'npm'
+    args: ['install']
+
+  - name: 'node:16'
+    entrypoint: 'npm'
+    args: ['run', 'build']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', '--quiet']
+
+# Optional: Store logs in Cloud Logging only
+options:
+  logging: CLOUD_LOGGING_ONLY
